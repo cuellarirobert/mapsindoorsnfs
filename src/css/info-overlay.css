@@ -1,0 +1,20 @@
+
+#info-overlay {
+  display: none; /* Initially hidden */
+  position: fixed; /* Fixed position */
+  z-index: 1000; /* On top */
+  /* Add other styles as needed */
+}
+
+.popup-image-container {
+  display: flex;
+  /* Add other styles as needed */
+}
+
+.info-btn {
+  /* Style for the info buttons */
+}
+
+.close-btn {
+  /* Style for the close button */
+}

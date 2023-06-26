@@ -1,0 +1,63 @@
+
+
+/* Importing Google font (Replace 'Roboto' and 'Open Sans' with your own choice of font family) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
+
+/* Set base font size to support rem units */
+html {
+    font-size: 16px; /* This is typically the default browser font-size, feel free to adjust as needed */
+}
+
+body {
+    /* Default body text font and color (Replace 'Roboto' with your own choice of font family) */
+    font-family: 'Roboto', sans-serif;
+    color: #333; /* replace with your preferred text color */
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    /* Headings font (Replace 'Open Sans' with your own choice of font family) */
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* For specific styling for each heading level, use something like: */
+h1 {
+    font-size: 2rem; /* 32px */
+}
+
+h2 {
+    font-size: 1.75rem; /* 28px */
+}
+
+h3 {
+    font-size: 1.5rem; /* 24px */
+}
+
+h4 {
+    font-size: 1.25rem; /* 20px */
+}
+
+h5 {
+    font-size: 1rem; /* 16px */
+}
+
+h6 {
+    font-size: 0.875rem; /* 14px */
+}
+
+/* You might also want to add specific styles for other typographic elements like `p`, `a`, `blockquote`, etc. */
+p {
+    font-size: 1rem; /* 16px */
+    line-height: 1.5;
+}
+
+a {
+    color: #0066cc; /* replace with your preferred link color */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* etc... */

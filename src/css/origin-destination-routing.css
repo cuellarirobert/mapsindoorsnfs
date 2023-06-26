@@ -1,0 +1,43 @@
+/* origin-destination-routing.css */
+.controls-container {
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  box-sizing: border-box; /* Consider padding and border in total width and height */
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+#go-back,
+#retrieve-data-button,
+#previous,
+#next {
+  width: 48%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  font-size: 24px;
+  color: white;
+  background-color: #0f5554;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+
+#go-back:hover,
+#retrieve-data-button:hover,
+#previous:hover,
+#next:hover {
+  background-color: #7D4AF3;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.button-container:nth-child(3) {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}

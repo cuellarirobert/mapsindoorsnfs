@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <script src="https://app.mapsindoors.com/mapsindoors/js/sdk/4.21.2/mapsindoors-4.21.2.js"></script>
+      <link rel="stylesheet" href="../src/css/search-and-actions.css">
+      <link rel="stylesheet" href="../src/css/availability-form.css">
+      <link rel="stylesheet" href="../src/css/base.css">
+      <link rel="stylesheet" href="../src/css/typography.css">
+      <link rel="stylesheet" href="../src/css/info-overlay.css">
+      <link rel="stylesheet" href="../src/css/origin-destination-routing.css">
+      <link rel="stylesheet" href="../src/css/splash-screen.css">
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+      <title>MapsIndoors</title>
+   </head>
+   <body>
+      <div id="splash-screen">
+         <!-- <img src="logo.png" alt="Your App Logo" /> -->
+         <h1>Please wait while the map loads with the current bookings...</h1>
+      </div>
+      <div class="container-fluid">
+         <mi-map-mapbox
+            style="width: 100%; height: 100%;"
+            access-token=""
+            mi-api-key=""
+            floor-selector-control-position="top-right"
+            my-position-control-position="top-right">
+         </mi-map-mapbox>
+         <div class="ui-container" id="ui-container">
+            <div id="searchactionsscreen" class="screen" style="display">
+               <div class="search-and-actions-container">
+                  <div class="mi-search-container">
+                     <mi-search id="search-input" mapsindoors="true" google="false" placeholder="Search for your location"></mi-search>
+                     <mi-list id="search-list"></mi-list>
+                  </div>
+                  <div class="button-container">
+                     <button class="button" id="show-availability-btn">Show Availability</button>
+                  </div>
+                  <div class="button-container">
+                     <button class="button" id="show-directions-btn">Show Directions</button>
+                  </div>
+               </div>
+            </div>
+            <div id="routingscreen" class="screen" style="display: none;">
+               <div class="controls-container hidden">
+                  <div class="row">
+                     <div class="input-container">
+                        <mi-search id="origin-input" mapsindoors="true" google="false" placeholder="Enter Origin"></mi-search>
+                        <mi-list id="origin-list"></mi-list>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="input-container">
+                        <mi-search id="destination-input" mapsindoors="true" google="false" placeholder="Enter Destination"></mi-search>
+                        <mi-list id="destination-list"></mi-list>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="button-container">
+                        <button id="go-back">Back to Search</button>
+                        <button id="retrieve-data-button">Get Directions</button>
+                     </div>
+                  </div>
+                  <div class="button-container">
+                     <button id="previous">Previous</button>
+                     <button id="next">Next</button>
+                  </div>
+               </div>
+            </div>
+            <div id="availabilityscreen" class="screen" style="display: none;">
+               <div class="availability-widget-parent-container">
+                  <!-- Availability form UI code -->
+                  <div class="booking-widget-container">
+                     <form class="booking-widget-form">
+                        <div class="date-container">
+                           <label for="bookingDate">Select a date:</label>
+                           <input type="date" id="bookingDate" name="bookingDate" required>
+                        </div>
+                        <div class="time-container">
+                           <div class="time-selector">
+                              <label for="startTime">Select start time:</label>
+                              <input type="time" id="startTime" name="startTime" required>
+                           </div>
+                           <div class="time-selector">
+                              <label for="endTime">Select end time:</label>
+                              <input type="time" id="endTime" name="endTime" required>
+                           </div>
+                        </div>
+                        <button id="availabilitySubmit">Submit</button>
+                        <button id="availability-go-back" type="button">Go back</button>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="info-overlay" class="info-overlay">
+         <!-- Info overlay UI code -->
+         <div class="popup-image-container">
+            <img id="info-image" class="popup-image" src="" alt="" />
+         </div>
+         <h2 id="info-title" class="popup-title"></h2>
+         <button id="btn-book" class="info-btn">Book this Resource</button>
+         <button id="btn-destination" class="info-btn">Set as Destination</button>
+         <button id="close-btn" class="close-btn">×</button>
+      </div>
+      <script type="module" src="/src/js/main.js"></script>
+   </body>
+</html>

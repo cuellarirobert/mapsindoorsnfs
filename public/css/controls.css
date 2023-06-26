@@ -1,0 +1,26 @@
+
+
+.controls-container {
+  display: flex;
+  flex-direction: column;
+  /* Add other styles as needed */
+}
+
+.input-container {
+  display: flex;
+  /* Add other styles as needed */
+}
+
+.transportation-buttons {
+  display: flex;
+  /* Add other styles as needed */
+}
+
+.transportation-button {
+  /* Style for the transportation buttons */
+}
+
+.button-container {
+  display: flex;
+  /* Add other styles as needed */
+}
