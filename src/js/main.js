@@ -331,46 +331,40 @@ showAvailabilityBtn.addEventListener('click', () => {
         console.log(location);
         handleLocationClick(location, mapsIndoorsInstance, mapInstance);
     });
-
-
-// Debounce function definition
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
+      const later = () => {
         clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
     };
 };
 
-// Mouse enter event handler
+let popup;
+
 const handleMouseEnter = debounce((location) => {
     // If a popup exists, remove it
     if (popup) {
         popup.remove();
     }
 
+    console.log('hi');
+    console.log(location);
+
     const coords = getCoords(location);
+
     const infoWindowContent = `<h2>${location.properties.name}</h2>`;
 
-    // Create a new popup and add it to the map
     popup = new mapboxgl.Popup({ closeOnClick: true, closeButton: true, className: 'info-popup' })
         .setLngLat([coords[0], coords[1]])
         .setHTML(infoWindowContent)
         .addTo(mapInstance);
-}, 250);
+}, 250); // Debounce time is 250 milliseconds
 
-// Mouse leave event handler
-const handleMouseLeave = debounce(() => {
-    if (popup) {
-        popup.remove();
-    }
-}, 250);
 
-// Add event listeners for mouseenter and mouseleave
 mapsIndoorsInstance.addListener('mouseenter', handleMouseEnter);
 mapsIndoorsInstance.addListener('mouseleave', handleMouseLeave);
 
