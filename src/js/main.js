@@ -331,18 +331,7 @@ showAvailabilityBtn.addEventListener('click', () => {
         console.log(location);
         handleLocationClick(location, mapsIndoorsInstance, mapInstance);
     });
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-    };
-};
-let popup;
+
 
 // Debounce function definition
 function debounce(func, wait) {
