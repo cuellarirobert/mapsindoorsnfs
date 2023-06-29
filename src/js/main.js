@@ -326,16 +326,57 @@ showAvailabilityBtn.addEventListener('click', () => {
             }
         });
 
+        mapsIndoorsInstance.addListener('click', location => {
+        console.log('hi');
+        console.log(location);
+        handleLocationClick(location, mapsIndoorsInstance, mapInstance);
+    });
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+};
+
+let popup;
+
+const handleMouseEnter = debounce((location) => {
+    // If a popup exists, remove it
+    if (popup) {
+        popup.remove();
+    }
+
+    console.log('hi');
+    console.log(location);
+
+    const coords = getCoords(location);
+
+    const infoWindowContent = `<h2>${location.properties.name}</h2>`;
+
+    popup = new mapboxgl.Popup({ closeOnClick: true, closeButton: true, className: 'info-popup' })
+        .setLngLat([coords[0], coords[1]])
+        .setHTML(infoWindowContent)
+        .addTo(mapInstance);
+}, 250); // Debounce time is 250 milliseconds
+
+
+mapsIndoorsInstance.addListener('mouseenter', handleMouseEnter);
+mapsIndoorsInstance.addListener('mouseleave', handleMouseLeave);
+
+        
+
 
         // Add routing functionality
     } catch (error) {
         console.error('MapsIndoors instance is not ready:', error);
     }
 
-    mapsIndoorsInstance.addListener('click', location => {
-        console.log('hi');
-        handleLocationClick(location, mapsIndoorsInstance, mapInstance);
-    });
+    
 
 
 });

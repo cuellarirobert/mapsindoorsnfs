@@ -16,6 +16,19 @@
       <title>MapsIndoors</title>
    </head>
    <body>
+
+      
+         <div id="info-overlay" class="info-overlay">
+         <!-- Info overlay UI code -->
+         <div class="popup-image-container">
+            <img id="info-image" class="popup-image" src="" alt="" />
+         </div>
+         <h2 id="info-title" class="popup-title"></h2>
+         <button id="btn-book" class="info-btn">Book this Resource</button>
+         <button id="btn-destination" class="info-btn">Set as Destination</button>
+         <button id="close-btn" class="close-btn">×</button>
+      </div>
+
       <div id="splash-screen">
          <!-- <img src="logo.png" alt="Your App Logo" /> -->
          <h1>Please wait while the map loads with the current bookings...</h1>
@@ -28,6 +41,9 @@
             floor-selector-control-position="top-right"
             my-position-control-position="top-right">
          </mi-map-mapbox>
+
+
+
          <div class="ui-container" id="ui-container">
             <div id="searchactionsscreen" class="screen" style="display">
                <div class="search-and-actions-container">
@@ -96,16 +112,7 @@
             </div>
          </div>
       </div>
-      <div id="info-overlay" class="info-overlay">
-         <!-- Info overlay UI code -->
-         <div class="popup-image-container">
-            <img id="info-image" class="popup-image" src="" alt="" />
-         </div>
-         <h2 id="info-title" class="popup-title"></h2>
-         <button id="btn-book" class="info-btn">Book this Resource</button>
-         <button id="btn-destination" class="info-btn">Set as Destination</button>
-         <button id="close-btn" class="close-btn">×</button>
-      </div>
+      
       <script type="module" src="/src/js/main.js"></script>
    </body>
 </html>
