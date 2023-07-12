@@ -18,7 +18,7 @@ To use the mapsindoorsnfs project as a reference for integrating MapsIndoors int
 1. Clone the repository:
 
    ```shell
-   git clone <repository-url>
+   git clone [<repository-url>](https://github.com/cuellarirobert/mapsindoorsnfs)
    cd mapsindoorsnfs
 
 2. Explore the code structure and implementation details to understand how MapsIndoors is integrated and utilized.
