@@ -310,6 +310,15 @@ initializeMapElements();
                     mapInstance.setPitch(venueDefaultPitch);
                 });
 
+                const miNearValueForPlace = `venue:${desiredVenue.id}`;
+                placeSearchElement.setAttribute('mi-near', miNearValueForPlace);
+
+                const miNearValueForOrigin = `venue:${desiredVenue.id}`;
+                originSearchElement.setAttribute('mi-near', miNearValueForOrigin);
+
+                const miNearValueForDestination = `venue:${desiredVenue.id}`;
+                destinationSearchElement.setAttribute('mi-near', miNearValueForDestination);
+
             }
         });
 
