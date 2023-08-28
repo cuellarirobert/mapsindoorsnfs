@@ -72,8 +72,8 @@ export async function getAvailabilityListInTimeRange(start_time, end_time) {
     'Authorization': `Bearer ${access_token}`,
   };
 
-  console.log('Start time:', start_time, 'ISO string:', new Date(start_time).toISOString());
-  console.log('End time:', end_time, 'ISO string:', new Date(end_time).toISOString());
+  // console.log('Start time:', start_time, 'ISO string:', new Date(start_time).toISOString());
+  // console.log('End time:', end_time, 'ISO string:', new Date(end_time).toISOString());
 
   const url = 'https://wscloud3.nfsonline.net/POC3API/api/Resource/AvailableResources';
 
