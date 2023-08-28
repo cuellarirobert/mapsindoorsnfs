@@ -16,45 +16,43 @@ export async function initializeDirections(mapInstance, mapsIndoorsInstance, ori
   search(originSearchElement, originListElement, mapsIndoorsInstance, mapInstance);
   search(destinationSearchElement, destinationListElement, mapsIndoorsInstance, mapInstance);
 
-  // Add event listeners to transportation buttons
-  const walkingButton = document.getElementById("walking");
-  const drivingButton = document.getElementById("driving");
-  const bicyclingButton = document.getElementById("bicycling");
-  const publicButton = document.getElementById("public");
+  // // Add event listeners to transportation buttons, don't exist now, but were in previous implementation.
+  // const walkingButton = document.getElementById("walking");
+  // const drivingButton = document.getElementById("driving");
+  // const bicyclingButton = document.getElementById("bicycling");
+  // const publicButton = document.getElementById("public");
 
 
 
 
 
-  walkingButton.addEventListener('click', () => {
-    transportationValue = "WALKING";
-    setActiveTransportationButton(walkingButton, walkingButton, drivingButton, bicyclingButton, publicButton);
-  });
+  // walkingButton.addEventListener('click', () => {
+  //   transportationValue = "WALKING";
+  //   setActiveTransportationButton(walkingButton, walkingButton, drivingButton, bicyclingButton, publicButton);
+  // });
 
-  drivingButton.addEventListener('click', () => {
-    transportationValue = "DRIVING";
-    setActiveTransportationButton(drivingButton, walkingButton, drivingButton, bicyclingButton, publicButton);
-  });
+  // drivingButton.addEventListener('click', () => {
+  //   transportationValue = "DRIVING";
+  //   setActiveTransportationButton(drivingButton, walkingButton, drivingButton, bicyclingButton, publicButton);
+  // });
 
-  bicyclingButton.addEventListener('click', () => {
-    transportationValue = "BICYCLING";
-    setActiveTransportationButton(bicyclingButton, walkingButton, drivingButton, bicyclingButton, publicButton);
-  });
+  // bicyclingButton.addEventListener('click', () => {
+  //   transportationValue = "BICYCLING";
+  //   setActiveTransportationButton(bicyclingButton, walkingButton, drivingButton, bicyclingButton, publicButton);
+  // });
 
-  publicButton.addEventListener('click', () => {
-    transportationValue = "PUBLIC";
-    setActiveTransportationButton(publicButton, walkingButton, drivingButton, bicyclingButton, publicButton);
-  });
+  // publicButton.addEventListener('click', () => {
+  //   transportationValue = "PUBLIC";
+  //   setActiveTransportationButton(publicButton, walkingButton, drivingButton, bicyclingButton, publicButton);
+  // });
 
   nextStepButton.addEventListener('click', () => {
     console.log("Next button clicked!");
-    debugger;
     nextStep(miDirectionsRendererInstance);
 });
 
 previousStepButton.addEventListener('click', () => {
     console.log("Previous button clicked!");
-    debugger;
     previousStep(miDirectionsRendererInstance);
 });
 console.log(nextStepButton, previousStepButton);

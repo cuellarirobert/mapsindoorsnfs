@@ -251,7 +251,7 @@ initializeMapElements();
 
 
 
-        populateCategories();
+        // populateCategories();
 
         // Get the selected start and end times
         const accessToken = await getAccessToken();
@@ -353,7 +353,7 @@ const handleMouseEnter = debounce((location) => {
 
 
 mapsIndoorsInstance.addListener('mouseenter', handleMouseEnter);
-mapsIndoorsInstance.addListener('mouseleave', handleMouseLeave);
+// mapsIndoorsInstance.addListener('mouseleave', handleMouseLeave);
 
         
 
@@ -371,43 +371,43 @@ mapsIndoorsInstance.addListener('mouseleave', handleMouseLeave);
 
 
 
-// categoriesLogic
-function populateCategories() {
-    mapsindoors.services.SolutionsService.getCategories().then(categories => {
-        // console.log(categories)
-        var option = '<option value="">Filter Locations</option>';
-        for (let i = 0; i < categories.length; i++) {
+// // categoriesLogic, in old implementation, but could be used again.
+// function populateCategories() {
+//     mapsindoors.services.SolutionsService.getCategories().then(categories => {
+//         // console.log(categories)
+//         var option = '<option value="">Filter Locations</option>';
+//         for (let i = 0; i < categories.length; i++) {
 
-            // console.log(categories[i])
-
-
-            option += '<option value="' + categories[i].key + '">' + categories[i].value + "</option>"
-
-        }
-        document.getElementById('category').innerHTML = option;
-
-        document.getElementById("category").addEventListener('change', function() {
-            var selectedCategory = this.value;
-
-            if (selectedCategory) {
-                mapsindoors.services.LocationsService.getLocations({
-                    categories: selectedCategory,
-                    lr: 'en'
-                }).then(locations => {
-
-                    console.log(locations);
-                    var locationIds = []
-                    for (var i = 0; i < locations.length; i++) {
-                        locationIds.push(locations[i].id);
+//             // console.log(categories[i])
 
 
+//             option += '<option value="' + categories[i].key + '">' + categories[i].value + "</option>"
 
-                    }
-                    mapsIndoorsInstance.filter(locationIds);
-                });
-            } else {
-                mapsIndoorsInstance.filter(null);
-            }
-        });
-    });
-}
+//         }
+//         document.getElementById('category').innerHTML = option;
+
+//         document.getElementById("category").addEventListener('change', function() {
+//             var selectedCategory = this.value;
+
+//             if (selectedCategory) {
+//                 mapsindoors.services.LocationsService.getLocations({
+//                     categories: selectedCategory,
+//                     lr: 'en'
+//                 }).then(locations => {
+
+//                     console.log(locations);
+//                     var locationIds = []
+//                     for (var i = 0; i < locations.length; i++) {
+//                         locationIds.push(locations[i].id);
+
+
+
+//                     }
+//                     mapsIndoorsInstance.filter(locationIds);
+//                 });
+//             } else {
+//                 mapsIndoorsInstance.filter(null);
+//             }
+//         });
+//     });
+// }
