@@ -16,6 +16,7 @@ export function search(miSearchElement, miListElement, mapsIndoorsInstance, mapI
       const miListItemElement = document.createElement('mi-list-item-location');
     location.properties.imageURL = mapsIndoorsInstance.getDisplayRule(location).icon
       miListItemElement.location = location;
+      miListItemElement.showExternalId = false;
 
 
       miListElement.appendChild(miListItemElement);

@@ -1,6 +1,6 @@
-import { getRoute} from './getRoute.js';
+import { miDirectionsRendererInstance, nextStepButton, previousStepButton } from '../../main.js';
 import { search } from './directionSearch.js';
-import { miDirectionsRendererInstance } from '../../main.js';
+import { getRoute } from './getRoute.js';
 
 
 let currentOriginLocation;
@@ -21,8 +21,7 @@ export async function initializeDirections(mapInstance, mapsIndoorsInstance, ori
   const drivingButton = document.getElementById("driving");
   const bicyclingButton = document.getElementById("bicycling");
   const publicButton = document.getElementById("public");
-  const nextStepButton = document.getElementById("next");
-  const previousStepButton = document.getElementById("previous");
+
 
 
 
@@ -47,15 +46,18 @@ export async function initializeDirections(mapInstance, mapsIndoorsInstance, ori
     setActiveTransportationButton(publicButton, walkingButton, drivingButton, bicyclingButton, publicButton);
   });
 
-  // Set up event listeners for Next and Previous buttons
   nextStepButton.addEventListener('click', () => {
-    console.log('clicked next step');
+    console.log("Next button clicked!");
+    debugger;
     nextStep(miDirectionsRendererInstance);
-  });
+});
 
-  previousStepButton.addEventListener('click', () => {
+previousStepButton.addEventListener('click', () => {
+    console.log("Previous button clicked!");
+    debugger;
     previousStep(miDirectionsRendererInstance);
-  });
+});
+console.log(nextStepButton, previousStepButton);
 
 
 }
