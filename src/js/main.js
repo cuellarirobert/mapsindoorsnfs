@@ -1,10 +1,3 @@
-
-// import '../css/v4style.css';
-
-// import {
-//     defineCustomElements
-// } from '../../node_modules/@mapsindoors/components/dist/esm/loader.js';
-
 import {
     defineCustomElements
 } from 'https://www.unpkg.com/@mapsindoors/components/dist/esm/loader.js';
@@ -12,20 +5,20 @@ import {
 
 
 import {
-    search,
-    currentOriginLocation,
-    currentDestinationLocation
+    currentDestinationLocation, currentOriginLocation, search
 } from './components/directions/directionSearch.js';
 
 import {
-    setActiveTransportationButton,
-    initializeDirections
+    initializeDirections, setActiveTransportationButton
 } from './components/directions/directions.js';
 
 import {
     placeSearch
 } from './components/locationSearch/placeSearch.js';
 
+import {
+    allBookableLocationIds, pad, selectedDate, setDefaultTimes, showMeetingRoomAvailability, toLocalTimeString, toZulu, updateSelectedDate
+} from './components/availability/availabilityLogic.js';
 import {
     getRoute
 } from './components/directions/getRoute.js';
@@ -38,16 +31,6 @@ import {
     handleLocationClick,
     popups
 } from './utils/utils.js';
-import {
-    updateSelectedDate,
-    pad,
-    toLocalTimeString,
-    setDefaultTimes,
-    toZulu,
-    showMeetingRoomAvailability,
-    selectedDate,
-    allBookableLocationIds
-} from './components/availability/availabilityLogic.js';
 
 document.addEventListener("DOMContentLoaded", function(event) { 
     const mapboxElement = document.querySelector('mi-map-mapbox');
@@ -101,10 +84,8 @@ let venueDefaultZoom = null
 
 let desiredVenueName = "Stigsborgvej"
 
-const nextStepButton = document.getElementById("next");
-const previousStepButton = document.getElementById("previous");
-// console.log(nextStepButton);
-// console.log(previousStepButton);
+export const nextStepButton = document.getElementById("next");
+export const previousStepButton = document.getElementById("previous");
 
 
 // Wait for the window to load completely
@@ -146,34 +127,37 @@ miMapElement.addEventListener('mapsIndoorsReady', async () => {
 
 
 
+async function initializeMapElements() {
+    try {
+        const directionsServiceInstance = await miMapElement.getDirectionsServiceInstance();
+        miDirectionsServiceInstance = directionsServiceInstance;
 
-        miMapElement.getDirectionsServiceInstance().then((directionsServiceInstance) => {
-            miDirectionsServiceInstance = directionsServiceInstance;
+        const directionsRendererInstance = await miMapElement.getDirectionsRendererInstance();
+        miDirectionsRendererInstance = directionsRendererInstance;
 
-            miMapElement.getDirectionsRendererInstance()
-                .then((directionsRendererInstance) => miDirectionsRendererInstance = directionsRendererInstance);
-            // main.js
-            const retrieveDataButton = document.getElementById("retrieve-data-button");
+        console.log("Initializing directions...");
 
-            initializeDirections(mapInstance, mapsIndoorsInstance, originSearchElement, destinationSearchElement, originListElement, destinationListElement, placeSearchElement, placeSearchlist);
+        const retrieveDataButton = document.getElementById("retrieve-data-button");
+        initializeDirections(mapInstance, mapsIndoorsInstance, originSearchElement, destinationSearchElement, originListElement, destinationListElement, placeSearchElement, placeSearchlist);
 
-            retrieveDataButton.addEventListener('click', async () => {
-                try {
-                    console.log(currentOriginLocation, currentDestinationLocation, transportationValue);
-                    const directionsResult = await getRoute(currentOriginLocation, currentDestinationLocation, transportationValue);
-                    miDirectionsRendererInstance.setRoute(directionsResult);
+        retrieveDataButton.addEventListener('click', async () => {
+            try {
+                console.log(currentOriginLocation, currentDestinationLocation, transportationValue);
+                const directionsResult = await getRoute(currentOriginLocation, currentDestinationLocation, transportationValue);
+                miDirectionsRendererInstance.setRoute(directionsResult);
+                console.log('getting route and setting route');
+                miDirectionsRendererInstance.setVisible(true);
 
-                    popups.forEach(popup => {
-                        popup.remove();
-                    });
-                    // Clear the popups array
-                    popups.length = 0
-
-
-                } catch (error) {
-                    // Handle error
-                }
-            });
+                popups.forEach(popup => {
+                    popup.remove();
+                });
+                // Clear the popups array
+                popups.length = 0;
+            } catch (error) {
+                // Handle error
+                console.error("Error retrieving and setting route:", error);
+            }
+        });
 
         showDirectionsBtn.addEventListener('click', () => {
             routingscreen.style.display = 'grid';
@@ -188,23 +172,26 @@ miMapElement.addEventListener('mapsIndoorsReady', async () => {
                 mapInstance.removeLayer('route');
                 mapInstance.removeSource('route');
             }
-            miDirectionsRendererInstance.setVisible(false)
+            miDirectionsRendererInstance.setVisible(false);
         });
 
-showAvailabilityBtn.addEventListener('click', () => {
-  searchactionsscreen.style.display = 'none';
-  availabilityscreen.style.display = 'block';
-});
-
+        showAvailabilityBtn.addEventListener('click', () => {
+            searchactionsscreen.style.display = 'none';
+            availabilityscreen.style.display = 'block';
+        });
 
         availabilityGoBackButton.addEventListener('click', () => {
             availabilityscreen.style.display = 'none';
             searchactionsscreen.style.display = 'flex';
         });
 
+    } catch (error) {
+        console.error("Error initializing map elements:", error);
+    }
+}
 
+initializeMapElements();
 
-        });
 
 
 
@@ -362,7 +349,7 @@ const handleMouseEnter = debounce((location) => {
         .setLngLat([coords[0], coords[1]])
         .setHTML(infoWindowContent)
         .addTo(mapInstance);
-}, 250); // Debounce time is 250 milliseconds
+}, 500); // Debounce time is 250 milliseconds
 
 
 mapsIndoorsInstance.addListener('mouseenter', handleMouseEnter);
