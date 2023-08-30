@@ -125,3 +125,36 @@ display: flex;
 .mapboxgl-popup.info-popup {
     border-radius: 10px;
 }
+
+
+@media only screen and (max-width: 768px) {
+  .ui-container {
+    top: 50rem; 
+    bottom: 10%; 
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: auto;
+    padding: 12px; 
+  }
+  
+  .screen {
+    max-width: 100%;
+    width: 19rem;
+    padding: 0.5rem;
+  }
+
+  #info-overlay {
+    width: 90%; 
+    max-height: 70%; 
+    top: auto; 
+    bottom: 10%; 
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .info-btn {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
