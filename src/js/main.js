@@ -361,7 +361,7 @@ const handleMouseEnter = debounce((location) => {
 }, 500); // Debounce time is 250 milliseconds
 
 
-mapsIndoorsInstance.addListener('mouseenter', handleMouseEnter);
+// mapsIndoorsInstance.addListener('mouseenter', handleMouseEnter);
 // mapsIndoorsInstance.addListener('mouseleave', handleMouseLeave);
 
         
